@@ -1,0 +1,41 @@
+.btn{
+    padding: 13px 32px 14px 32px;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 49px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #000000;
+}
+.btn_black{
+    background: #000000;
+    color: white;
+}
+
+.btn_black:hover{
+    background: #1F4766;
+}
+
+.btn_white:hover{
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.first_txt{
+    margin-right: 23px;
+}
+
+.first_btn{
+    margin-right: 40px;
+}
+
+.home_btn{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    color: #FFFFFF;
+    background: #000000;
+    display: flex;
+    margin: 25px auto 0 auto;
+}

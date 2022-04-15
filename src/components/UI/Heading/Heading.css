@@ -1,0 +1,24 @@
+.heading{
+    margin-top: 35px;
+    display: flex;
+
+}
+.back{
+    position: absolute;
+    display: flex;
+    left: 0;
+}
+
+.back p{
+    margin-left: 19px;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 22px;
+}
+
+h1{
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    margin: 0 auto;
+}

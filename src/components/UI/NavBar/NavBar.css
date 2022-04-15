@@ -1,0 +1,42 @@
+.navbar{
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+}
+.navbar .navbar_btns p{
+    float: left;
+}
+.navbar{
+    margin-top: 38px;
+    display: flex;
+    align-items: center;
+}
+
+.navbar_btns{
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+
+}
+
+.navbar_link{
+    text-decoration: none;
+}
+
+.navbar_links{
+    margin-left: 62px;
+}
+.navbar_links .navbar_link{
+    margin-left: 28px;
+}
+
+.normal:hover{
+    color: #FF0000;
+}
+
+.active{
+    color: #FF0000;
+    font-weight: 700;
+    border-bottom: 1px solid #FF0000;
+}
