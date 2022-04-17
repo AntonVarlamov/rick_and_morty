@@ -5,6 +5,7 @@
 }
 .back{
     position: absolute;
+    cursor: pointer;
     display: flex;
     left: 0;
 }

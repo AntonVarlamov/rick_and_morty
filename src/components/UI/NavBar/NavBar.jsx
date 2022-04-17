@@ -1,25 +1,31 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {Link} from "react-router-dom";
 import MyButton from "../Button/MyButton";
-import logo from  "../../../logo/rick_and_morty.svg"
+import logo from "../../../assetes/icons/rick_and_morty.svg"
 import "./NavBar.css"
+import {AuthContext} from "../../../context/context";
 
 const NavBar = () => {
-    let [auth, setAuth] = useState(false);
+    const {isAuth, setIsAuth} = useContext(AuthContext);
     const authorization = () =>{
-        setAuth(!auth);
+        setIsAuth(!isAuth);
+    }
+    const checkPath = (path) => {
+        return document.location.pathname.search(path) !== -1
+            ? "active"
+            : "normal"
     }
     return (
-        <div className="container navbar">
+        <header className="container navbar">
             <img src={logo} alt="rick and morty logo" className="navbar_logo" height={112}/>
             <nav className="navbar_links">
-                <a href="/main" className="navbar_link active">Главная</a>
-                {auth &&
-                    <a href="/main/favourites" className="navbar_link normal">Избранное</a>
+                <Link to="/main" className={`navbar_link ${checkPath("/main")}`}>Главная</Link>
+                {isAuth &&
+                    <Link to="/main/favourites" className={`navbar_link ${checkPath("/main/favourites")}`}>Избранное</Link>
                 }
-                <a href="/about" className="navbar_link normal">О проекте</a>
+                <Link to="/about" className={`navbar_link ${checkPath("/about")}`} >О проекте</Link>
             </nav>
-            {auth
+            {isAuth
                 ? <div className="navbar_btns">
                     <p className="first_txt">chelibos</p>
                     <MyButton className="btn_white" onClick={authorization}>Выйти</MyButton>
@@ -29,7 +35,7 @@ const NavBar = () => {
                     <MyButton className="btn_black" onClick={authorization}>Войти</MyButton>
                 </div>
             }
-        </div>
+        </header>
     );
 };
 

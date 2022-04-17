@@ -1,4 +1,6 @@
+
 .btn{
+    cursor: pointer;
     padding: 13px 32px 14px 32px;
     border: 1px solid #000000;
     box-sizing: border-box;
