@@ -16,16 +16,16 @@ const Main = () => {
                     <p className="main_link_heading">Персонажи</p>
                     <p className="main_link_text">Зайди и познакомься со всеми персонажами вселенной</p>
                 </Link>
-                <div className="main_link">
+                <Link to={'/main/locations'} className="main_link">
                     <img src={mainLocations} alt="Локации"/>
                     <p className="main_link_heading">Локации</p>
                     <p className="main_link_text">Исследуй все локации. Давай же, не будь занудой!</p>
-                </div>
-                <div className="main_link">
+                </Link>
+                <Link to={'/main/episodes'} className="main_link">
                     <img src={mainEpisodes} alt="Эпизоды"/>
                     <p className="main_link_heading">Эпизоды</p>
                     <p className="main_link_text">Узнай чуть больше о карте приключений Рика и Морти</p>
-                </div>
+                </Link>
             </section>
         </div>
     );

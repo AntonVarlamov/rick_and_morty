@@ -10,7 +10,7 @@ import redTiles from "../assetes/icons/red_tiles.svg";
 import hamburger from "../assetes/icons/hamburger.svg";
 import redHamburger from "../assetes/icons/red_hamburger.svg";
 import Pagination from "../components/UI/Pagination/Pagination";
-import {getEpisodes} from "../components/utils/calculations";
+import {getNumberEpisodes} from "../components/utils/calculations";
 import LongCharacterPanel from "../components/UI/InfoPanel/LongCharacterPanel";
 import {debounce} from "../components/utils/debounce";
 
@@ -18,27 +18,29 @@ const MainCharacters = () => {
     const [isHamburger, setIsHamburger] = useState(true)
     const [search, setSearch] = useState({
         name: "",
-        race: "",
+        species: "",
         status: ""
     });
     const [characters, setCharacters] = useState([]);
     const [page, setPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1)
-    const [fetchCharacters, error] = useFetching(async () => {
-        const response = await PostService.getCharacters(page, search);
-        setTotalPages(response?.data.info.pages)
-        setCharacters([...response.data.results])
-    });
+    async function fetchCharacters() {
+        const response = await PostService.getInfo(page, search, 'character');
+        setTotalPages((response?.data.info.pages ?? []))
+        setCharacters([...(response?.data.results ?? [])])
+    }
 
     useEffect(() => {
         fetchCharacters()
-    }, [page, totalPages, search])
+    }, [search, page])
 
     function filterSearch(e, name) {
+        if (e.target.value === search[name]) {
+            return
+        }
         let copy = {...search};
         copy[name] = e.target.value
         setSearch(copy)
-        //const func = debounce(fetchFilterCharacters, 1000);
     }
 
     return (
@@ -51,7 +53,8 @@ const MainCharacters = () => {
                     <MyInput
                         className="long_input"
                         placeholder="Введите имя персонажа"
-                        onChange={(e) => filterSearch(e, 'name')}
+                        onChange={debounce((e) => filterSearch(e, 'name'), 500)}
+                        type="text"
                     />
                 </div>
                 <div>
@@ -59,7 +62,8 @@ const MainCharacters = () => {
                     <MyInput
                         className="short_input"
                         placeholder="Введите расу персонажа"
-                        onChange={(e) => filterSearch(e, 'race')}
+                        onChange={debounce((e) => filterSearch(e, 'species'), 500)}
+                        type="text"
                     />
                 </div>
                 <div>
@@ -67,7 +71,8 @@ const MainCharacters = () => {
                     <MyInput
                         className="short_input"
                         placeholder="Выберете статус персонажа"
-                        onChange={(e) => filterSearch(e, 'status')}
+                        onChange={debounce((e) => filterSearch(e, 'status'), 500)}
+                        type="text"
                     />
                 </div>
                 <div className="filter_types">
@@ -90,6 +95,9 @@ const MainCharacters = () => {
                 </div>
             </section>
             <section className="container main_characters">
+                {!characters.length
+                    && <p className="not_found container">Таких персонажей пока не существует</p>
+                }
                 {characters.map((item, id) => {
                     return (
                         isHamburger
@@ -99,7 +107,9 @@ const MainCharacters = () => {
                     )
                 })}
             </section>
-            <Pagination page={page} setPage={setPage} totalPages={totalPages}/>
+            {!!characters.length
+                && <Pagination page={page} setPage={setPage} totalPages={totalPages}/>
+            }
         </div>
     );
 };

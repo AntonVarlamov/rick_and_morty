@@ -16,6 +16,14 @@ a {
     position: relative;
 }
 
+.not_found {
+    margin-top: 157px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 59px;
+}
+
 .main {
     margin-top: 90px;
     display: flex;
@@ -98,6 +106,7 @@ a {
     border: 1px dashed rgba(162, 162, 162, 0.6);
     box-sizing: border-box;
     border-radius: 5px;
+    min-height: 164px;
 }
 
 .panel:hover {
@@ -110,6 +119,7 @@ a {
 }
 
 .add {
+    cursor: pointer;
     background: #00A3FF;
     border: 1px solid rgba(162, 162, 162, 0.6);
     border-radius: 100%;
@@ -136,7 +146,7 @@ a {
     margin-bottom: 35px;
 }
 
-.main_characters {
+.main_characters, .main_locations, .main_episodes {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -148,9 +158,22 @@ a {
     height: 162px;
     margin: 1px 0 1px 1px;
 }
-.character_name{
-    max-width: 300px;
+
+.location_name, .episode_name {
+    margin-top: 11px;
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 44px;
+    text-align: center;
 }
+
+.character_name {
+    max-width: 300px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+}
+
 .short_panel .character_fields {
     display: grid;
     grid-template-columns: 153px 1fr;
@@ -162,6 +185,7 @@ a {
     grid-template-columns: 153px 194px 75px 1fr;
     grid-gap: 9px;
 }
+
 .long_panel {
     display: flex;
     position: relative;
@@ -173,6 +197,7 @@ a {
     font-weight: 400;
     font-size: 12px;
     line-height: 15px;
+    color: #1F4766;
 }
 
 .field_value {
@@ -194,11 +219,6 @@ a {
     top: 20px;
 }
 
-.character_name {
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 24px;
-}
 
 .right {
     margin-left: 15px;
@@ -215,11 +235,13 @@ a {
 }
 
 .hamburger {
+    cursor: pointer;
     margin-top: 22px;
     margin-right: 15px;
 }
 
 .tiles {
+    cursor: pointer;
     margin-top: 20px;
     margin-bottom: -2px;
 }
@@ -228,7 +250,11 @@ a {
     display: flex;
     cursor: pointer;
 }
-.prev_page{
+.next_page{
+    margin-left: 30px;
+}
+
+.prev_page {
     margin-right: 50px;
 }
 
@@ -238,6 +264,7 @@ a {
 
 .pagination {
     justify-content: center;
+    margin-top: 32px;
 }
 
 .next_page_icon {
@@ -256,7 +283,7 @@ a {
     color: #FF0000;
 }
 
-.page{
+.page {
     border: 1px solid rgba(0, 0, 0, 0.4);
     width: 30px;
     height: 30px;
@@ -267,14 +294,17 @@ a {
     margin-bottom: 20px;
 
 }
-.page:hover{
+
+.page:hover {
     color: #00A3FF;
     border: 1px solid #00A3FF;
 }
-.page_cur{
+
+.page_cur {
     color: #FF0000;
     border: 1px solid #FF0000;
 }
+
 .prev_page_icon {
     margin-right: 10px;
     width: 24px;
@@ -285,3 +315,61 @@ a {
 .prev_page:hover .prev_page_icon {
     background: url("../assetes/icons/left_red.svg");
 }
+
+.short_panel_location {
+    position: relative;
+    width: 574px;
+    min-height: 166px;
+    margin-bottom: 35px;
+}
+
+.short_panel_location .location_fields, .long_panel .episode_fields {
+    display: grid;
+    grid-template-columns: 257px 1fr;
+}
+
+.field_big_number {
+    margin-top: 11px;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+}
+
+.right_side_location {
+    margin-top: 9px;
+}
+
+.left_side_location {
+    margin-top: 4px;
+    margin-left: 30px;
+}
+
+.left_side_location .field_name, .left_side_location .field_value {
+    margin-top: 5px;
+}
+
+.short_panel_location .field_name  {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.filter_main_locations {
+    margin-top: 34px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.episode_panel .btn_long{
+    top: 28px;
+    right: 29px;
+}
+
+.episode_panel .right_field .field_value{
+    margin-right: 50px;
+}
+
+.episode_panel .field_value, .episode_panel .field_name{
+    margin-top: 5px;
+}
+

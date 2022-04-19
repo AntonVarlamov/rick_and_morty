@@ -1,0 +1,94 @@
+.modal * {
+    margin: 0;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.modal_dialog {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 370px;
+    background: white;
+    border: 1px dashed rgba(162, 162, 162, 0.6);
+    box-sizing: border-box;
+    box-shadow: 0 0 20px 12px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+}
+
+.modal_png {
+    position: absolute;
+    z-index: -1;
+}
+
+.toxic_rick_png {
+    top: 47px;
+    left: -264px;
+}
+
+.rick_mechanic_png {
+    left: 81px;
+    top: -160px;
+}
+
+.morty_png {
+    top: -34px;
+    right: -144px;
+}
+
+.none {
+    display: none;
+}
+
+.modal .btn {
+    position: inherit;
+    display: block;
+    margin: 53px auto 36px auto;
+}
+
+.modal label {
+    margin-left: 10px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+}
+
+.modal_heading_login_text {
+    font-weight: 500;
+    font-size: 48px;
+    line-height: 59px;
+    margin-top: 34px;
+}
+
+.login_form {
+    margin-top: 54px;
+}
+
+.margin34 {
+    display: grid;
+    grid-gap: 34px;
+}
+
+.modal_heading_registration_text {
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 44px;
+    margin-top: 30px;
+}
+
+.registration_form{
+    margin-top: 40px;
+}

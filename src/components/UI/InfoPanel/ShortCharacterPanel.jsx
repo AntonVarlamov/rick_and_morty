@@ -4,7 +4,7 @@ import dead from "../../../assetes/icons/dead.svg";
 import unknown from "../../../assetes/icons/unknown.svg";
 import plus from "../../../assetes/icons/plus.svg"
 
-const ShortCharacterPanel = ({character, ...props}) => {
+const ShortCharacterPanel = ({character}) => {
     const status = {
         alive: [alive, "Живой"],
         dead: [dead, "Мертв"],

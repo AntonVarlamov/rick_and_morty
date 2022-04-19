@@ -1,22 +1,37 @@
 import axios from "axios";
 
 export default class PostService {
-    static async getCharacters(page, search){
+    static async getInfo(page, search, name) {
         let filter = ""
         let response
 
-        for(let key in search){
-            if(search[key]){
+        for (let key in search) {
+            if (search[key]) {
                 filter += key + "=" + search[key] + "&";
             }
         }
-        if(!filter){
-            response = await axios.get("https://rickandmortyapi.com/api/character?page=" + page);
-        } else {
-            response = await axios.get("https://rickandmortyapi.com/api/character?" + filter + "page=" + page);
+        let url = !filter
+            ? `https://rickandmortyapi.com/api/${name}?page=` + page
+            : `https://rickandmortyapi.com/api/${name}?` + filter + "page=" + page;
 
-        }
+        await axios.get(url)
+            .then((res) => {
+                response =  res
+            })
+            .catch((e) => {
+                return null
+            });
         return response
     }
-
+    static async getCharacters(arr){
+        let response
+        await axios.get("https://rickandmortyapi.com/api/character/" + JSON.stringify(arr))
+            .then((res) => {
+                response =  res
+            })
+            .catch((e) => {
+                return null
+            });
+        return response
+    }
 }
