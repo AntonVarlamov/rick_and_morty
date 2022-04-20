@@ -138,6 +138,14 @@ a {
     background: #008BDA;
 }
 
+.added {
+    background: #00CA51;
+}
+
+.added:hover {
+    background: #00CA51;
+}
+
 .short_panel {
     display: flex;
     position: relative;
@@ -250,7 +258,8 @@ a {
     display: flex;
     cursor: pointer;
 }
-.next_page{
+
+.next_page {
     margin-left: 30px;
 }
 
@@ -348,7 +357,7 @@ a {
     margin-top: 5px;
 }
 
-.short_panel_location .field_name  {
+.short_panel_location .field_name {
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -360,16 +369,16 @@ a {
     justify-content: space-between;
 }
 
-.episode_panel .btn_long{
+.episode_panel .btn_long {
     top: 28px;
     right: 29px;
 }
 
-.episode_panel .right_field .field_value{
+.episode_panel .right_field .field_value {
     margin-right: 50px;
 }
 
-.episode_panel .field_value, .episode_panel .field_name{
+.episode_panel .field_value, .episode_panel .field_name {
     margin-top: 5px;
 }
 

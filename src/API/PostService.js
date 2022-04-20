@@ -19,7 +19,7 @@ export default class PostService {
                 response =  res
             })
             .catch((e) => {
-                return null
+                console.log(e)
             });
         return response
     }

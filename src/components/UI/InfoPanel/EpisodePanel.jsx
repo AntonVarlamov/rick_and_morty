@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {getNumberEpisodes, getIdFromUrl, parseCharacters} from "../../utils/calculations";
+import {getNumberEpisodes, getIdFromUrl, parseCharacters} from "../../../utils/calculations";
 import MyButton from "../Button/MyButton";
 import plus from "../../../assetes/icons/plus.svg";
 import PostService from "../../../API/PostService";

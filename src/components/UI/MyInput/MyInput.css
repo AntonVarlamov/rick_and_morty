@@ -32,6 +32,36 @@
 
 .modal .input_filter {
     margin: 0;
+
+}
+
+.error{
+    position: absolute;
+    background: #DF0000;
+    width: 331px;
+    padding: 2px 13px;
+    border: 1px solid #DF0000;
+    box-sizing: border-box;
+    border-radius: 0 0 5px 5px;
+    display: flex;
+    transform: translate(0, -3px);
+}
+
+.error .warning_icon{
+    width: 16px;
+    margin-right: 5px;
+}
+
+.error p{
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 15px;
+}
+
+.input_error{
+    border: 1px solid #DF0000;
+    position: relative;
 }
 
 

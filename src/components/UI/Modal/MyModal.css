@@ -92,3 +92,16 @@
 .registration_form{
     margin-top: 40px;
 }
+
+.password{
+    position: relative;
+}
+
+.eye{
+    position: absolute;
+    right: 9px;
+    top: 50%;
+    transform: translate(0, -50%);
+    cursor: pointer;
+}
+

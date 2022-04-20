@@ -10,9 +10,9 @@ import redTiles from "../assetes/icons/red_tiles.svg";
 import hamburger from "../assetes/icons/hamburger.svg";
 import redHamburger from "../assetes/icons/red_hamburger.svg";
 import Pagination from "../components/UI/Pagination/Pagination";
-import {getNumberEpisodes} from "../components/utils/calculations";
+import {getNumberEpisodes} from "../utils/calculations";
 import LongCharacterPanel from "../components/UI/InfoPanel/LongCharacterPanel";
-import {debounce} from "../components/utils/debounce";
+import {debounce} from "../utils/debounce";
 
 const MainCharacters = () => {
     const [isHamburger, setIsHamburger] = useState(true)
@@ -26,8 +26,11 @@ const MainCharacters = () => {
     const [totalPages, setTotalPages] = useState(1)
     async function fetchCharacters() {
         const response = await PostService.getInfo(page, search, 'character');
-        setTotalPages((response?.data.info.pages ?? []))
+        setTotalPages((response?.data.info.pages ?? 1))
         setCharacters([...(response?.data.results ?? [])])
+        if(!response?.data.results.length){
+            setPage(1)
+        }
     }
 
     useEffect(() => {
@@ -40,7 +43,7 @@ const MainCharacters = () => {
         }
         let copy = {...search};
         copy[name] = e.target.value
-        setSearch(copy)
+        setSearch({...copy})
     }
 
     return (
@@ -101,8 +104,8 @@ const MainCharacters = () => {
                 {characters.map((item, id) => {
                     return (
                         isHamburger
-                            ? <LongCharacterPanel key={id} character={item}/>
-                            : <ShortCharacterPanel key={id} character={item}/>
+                            ? <LongCharacterPanel key={id} character={item} page={page}/>
+                            : <ShortCharacterPanel key={id} character={item} page={page}/>
 
                     )
                 })}

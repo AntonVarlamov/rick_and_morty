@@ -6,18 +6,17 @@ import "./NavBar.css"
 import {AuthContext} from "../../../context/context";
 
 const NavBar = () => {
-    const {setLoginVisibility, setRegistrationVisibility} = useContext(AuthContext)
-    const {isAuth, setIsAuth} = useContext(AuthContext);
+    const {setLoginVisibility, setRegistrationVisibility, isAuth, setIsAuth, currentUser} = useContext(AuthContext);
+
     const login = () => {
         setLoginVisibility(true)
-        setIsAuth(!isAuth);
     }
     const logout = () => {
         localStorage.setItem("rickAndMortyLastUser", "")
         setIsAuth(!isAuth);
     }
 
-    const registration = () =>{
+    const registration = () => {
         setRegistrationVisibility(true)
     }
 
@@ -39,7 +38,7 @@ const NavBar = () => {
             </nav>
             {isAuth
                 ? <div className="navbar_btns">
-                    <p className="first_txt">chelibos</p>
+                    <p className="first_txt">{currentUser.secondName + " " + currentUser.firstName[0] + "."}</p>
                     <MyButton className="btn_white" onClick={logout}>Выйти</MyButton>
                 </div>
                 : <div className="navbar_btns">

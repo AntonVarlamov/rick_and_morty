@@ -3,7 +3,7 @@ import alive from "../../../assetes/icons/alive.svg";
 import dead from "../../../assetes/icons/dead.svg";
 import unknown from "../../../assetes/icons/unknown.svg";
 import plus from "../../../assetes/icons/plus.svg";
-import {getNumberEpisodes} from "../../utils/calculations";
+import {getNumberEpisodes} from "../../../utils/calculations";
 import MyButton from "../Button/MyButton";
 
 const LongCharacterPanel = ({character}) => {

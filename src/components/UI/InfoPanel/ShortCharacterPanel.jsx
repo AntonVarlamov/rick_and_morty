@@ -1,14 +1,45 @@
-import React, {useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import alive from "../../../assetes/icons/alive.svg";
 import dead from "../../../assetes/icons/dead.svg";
 import unknown from "../../../assetes/icons/unknown.svg";
-import plus from "../../../assetes/icons/plus.svg"
+import plus from "../../../assetes/icons/plus.svg";
+import added from "../../../assetes/icons/added.svg";
+import {AuthContext} from "../../../context/context";
 
-const ShortCharacterPanel = ({character}) => {
+const ShortCharacterPanel = ({character, page}) => {
+    const {currentUser, setCurrentUser, isAuth, setLoginVisibility} = useContext(AuthContext);
+    const [isAdded, setIsAdded] = useState(false)
     const status = {
         alive: [alive, "Живой"],
         dead: [dead, "Мертв"],
         unknown: [unknown, "Неизвестно"]
+    }
+    useEffect(() => {
+        if (isAuth && (currentUser.favouriteCharacters ?? {})[+character.id] === true) {
+            setIsAdded(true)
+        } else {
+            setIsAdded(false)
+        }
+    }, [character])
+    const addFavourite = () => {
+        if (!isAuth) {
+            setLoginVisibility(true)
+            return false
+        }
+        if(isAdded){
+            return false
+        }
+        const copy = {...currentUser}
+        if (!copy.favouriteCharacters) {
+            copy.favouriteCharacters = {}
+        }
+        const users = JSON.parse(localStorage.getItem("rickAndMortyUsers") ?? "{}");
+        copy.favouriteCharacters[character.id] = true;
+        users[copy.email] = {...copy};
+        users[copy.login] = {...copy};
+        localStorage.setItem("rickAndMortyUsers", JSON.stringify(users))
+        setCurrentUser(copy)
+        setIsAdded(true)
     }
     return (
         <div className="short_panel panel">
@@ -26,12 +57,16 @@ const ShortCharacterPanel = ({character}) => {
                     <p className="field_value">{character?.location.name}</p>
                 </div>
             </div>
-            <div className="character_status" style={{float:"right"}}>
-                <img src={status[character.status.toLowerCase()][0]} style={{display:"inline"}} alt="status"/>
-                <p className="field_value" style={{display:"inline"}}> {status[character.status.toLowerCase()][1]}</p>
+            <div className="character_status" style={{float: "right"}}>
+                <img src={status[character.status.toLowerCase()][0]} style={{display: "inline"}} alt="status"/>
+                <p className="field_value" style={{display: "inline"}}> {status[character.status.toLowerCase()][1]}</p>
             </div>
-            <div className="add">
-                <img src={plus} alt="" />
+            <div className={"add" + (isAdded ? " added" : "")} onClick={() => {
+                if (!isAdded) {
+                    addFavourite()
+                }
+            }}>
+                <img src={isAdded ? added : plus} alt=""/>
             </div>
         </div>
     );

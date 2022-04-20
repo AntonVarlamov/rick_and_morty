@@ -3,7 +3,7 @@ import NavBar from "../components/UI/NavBar/NavBar";
 import Heading from "../components/UI/Heading/Heading";
 import PostService from "../API/PostService";
 import MyInput from "../components/UI/MyInput/MyInput";
-import {debounce} from "../components/utils/debounce";
+import {debounce} from "../utils/debounce";
 import Pagination from "../components/UI/Pagination/Pagination";
 import LocationPanel from "../components/UI/InfoPanel/LocationPanel";
 
@@ -20,9 +20,11 @@ const MainLocations = () => {
 
     async function fetchLocations() {
         const response = await PostService.getInfo(page, search, "location");
-        setTotalPages((response?.data.info.pages ?? []))
+        setTotalPages((response?.data.info.pages ?? 1))
         setLocations([...(response?.data.results ?? [])])
-
+        if (!response?.data.results.length) {
+            setPage(1)
+        }
     }
 
     useEffect(() => {
@@ -35,7 +37,7 @@ const MainLocations = () => {
         }
         let copy = {...search};
         copy[name] = e.target.value
-        setSearch(copy)
+        setSearch({...copy})
     }
 
     return (
