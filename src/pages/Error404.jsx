@@ -8,7 +8,7 @@ import {Link} from "react-router-dom";
 const Error404 = () => {
 
     return (
-        <section className="container error">
+        <section className="container">
             <img src={logo} alt="rick and morty logo" className="error_logo"/>
             <img src={error} alt="error 404" className="error_png"/>
             <p className="error_heading">Усп. Кажется вы заблудились. Только без паники!</p>

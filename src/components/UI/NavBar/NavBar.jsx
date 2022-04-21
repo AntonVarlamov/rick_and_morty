@@ -13,6 +13,7 @@ const NavBar = () => {
     }
     const logout = () => {
         localStorage.setItem("rickAndMortyLastUser", "")
+
         setIsAuth(!isAuth);
     }
 
@@ -31,8 +32,8 @@ const NavBar = () => {
             <nav className="navbar_links">
                 <Link to="/main" className={`navbar_link ${checkPath("/main")}`}>Главная</Link>
                 {isAuth &&
-                    <Link to="/main/favourites"
-                          className={`navbar_link ${checkPath("/main/favourites")}`}>Избранное</Link>
+                    <Link to="/favourites"
+                          className={`navbar_link ${checkPath("/favourites")}`}>Избранное</Link>
                 }
                 <Link to="/about" className={`navbar_link ${checkPath("/about")}`}>О проекте</Link>
             </nav>

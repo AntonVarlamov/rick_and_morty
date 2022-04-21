@@ -1,5 +1,4 @@
 import React, {useEffect, useMemo, useState} from 'react';
-import {useFetching} from "../hooks/useFetching";
 import PostService from "../API/PostService";
 import ShortCharacterPanel from "../components/UI/InfoPanel/ShortCharacterPanel";
 import NavBar from "../components/UI/NavBar/NavBar";

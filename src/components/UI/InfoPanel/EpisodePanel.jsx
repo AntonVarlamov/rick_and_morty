@@ -1,19 +1,64 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {getNumberEpisodes, getIdFromUrl, parseCharacters} from "../../../utils/calculations";
 import MyButton from "../Button/MyButton";
 import plus from "../../../assetes/icons/plus.svg";
 import PostService from "../../../API/PostService";
+import {AuthContext} from "../../../context/context";
+import done from "../../../assetes/icons/done.svg";
 
-const EpisodePanel = ({episode}) => {
+const EpisodePanel = ({episode, canDelete, favourites, setFavourites, index}) => {
+    const {currentUser, setCurrentUser, isAuth, setLoginVisibility} = useContext(AuthContext);
+    const [isAdded, setIsAdded] = useState(false)
+    useEffect(() => {
+        if (isAuth && (currentUser.favouriteEpisodes ?? {})[+episode.id] === true) {
+            setIsAdded(true)
+        } else {
+            setIsAdded(false)
+        }
+    }, [episode, isAuth])
+
+    const deleteFavourite = () =>{
+        const copy = {...currentUser}
+        const users = JSON.parse(localStorage.getItem("rickAndMortyUsers") ?? "{}");
+        delete copy.favouriteEpisodes[episode.id]
+        users[copy.email] = {...copy};
+        users[copy.login] = {...copy};
+        favourites.splice(index, 1)
+        localStorage.setItem("rickAndMortyUsers", JSON.stringify(users))
+        setFavourites(favourites)
+        setCurrentUser(copy)
+    }
+    const addFavourite = () => {
+        if (!isAuth) {
+            setLoginVisibility(true)
+            return false
+        }
+        if (isAdded) {
+            return false
+        }
+        const copy = {...currentUser}
+        if (!copy.favouriteEpisodes) {
+            copy.favouriteEpisodes = {}
+        }
+        const users = JSON.parse(localStorage.getItem("rickAndMortyUsers") ?? "{}");
+        copy.favouriteEpisodes[episode.id] = true;
+        users[copy.email] = {...copy};
+        users[copy.login] = {...copy};
+        localStorage.setItem("rickAndMortyUsers", JSON.stringify(users))
+        setCurrentUser(copy)
+        setIsAdded(true)
+    }
     const monthNames = ["January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December"
     ];
-    const[characters, setCharacters] = useState("");
+    const [characters, setCharacters] = useState("");
     const date = new Date(episode.created)
+
     async function fetchCharacters() {
         const response = await PostService.getCharacters(getIdFromUrl(episode.characters));
         setCharacters(parseCharacters((response?.data ?? [])))
     }
+
     useEffect(() => {
         fetchCharacters()
     }, [])
@@ -36,7 +81,18 @@ const EpisodePanel = ({episode}) => {
                     </div>
                 </div>
             </div>
-            <MyButton className="btn_long"><img src={plus}/><span> Добавить в избранное</span></MyButton>
+            {canDelete
+                ?<MyButton className="btn_long btn_delete_favourite" onClick={() => {
+                    deleteFavourite()
+                }}
+                ><img src={plus} style={{transform:"rotate(45deg)"}}/><span>  Удалить из избранного</span></MyButton>
+                : isAdded
+                    ? <div className="done"><img src={done} alt=""/><p>В избранном</p></div>
+                    : <MyButton className="btn_long" onClick={() => {
+                        addFavourite()
+                    }}
+                    ><img src={plus}/><span>  Добавить в избранное</span></MyButton>
+            }
         </div>
     );
 };

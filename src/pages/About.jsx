@@ -1,6 +1,7 @@
 import React from 'react';
 import Heading from "../components/UI/Heading/Heading";
 import NavBar from "../components/UI/NavBar/NavBar";
+import MySelect from "../components/UI/MySelect/MySelect";
 
 const About = () => {
     return (
@@ -18,6 +19,7 @@ const About = () => {
                 </p>
             </section>
         </div>
+
     );
 };
 

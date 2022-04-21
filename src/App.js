@@ -8,7 +8,7 @@ import Registration from "./components/UI/Registration/Registration";
 function App() {
     const lastUserName = localStorage.getItem("rickAndMortyLastUser") ?? false
     const [currentUser, setCurrentUser] = useState(
-        JSON.parse(localStorage.getItem("rickAndMortyUsers"))[lastUserName]
+        JSON.parse(localStorage.getItem("rickAndMortyUsers") ?? "{}")[lastUserName]
     )
     const [isAuth, setIsAuth] = useState(!!lastUserName);
     const [loginVisibility, setLoginVisibility] = useState(false)

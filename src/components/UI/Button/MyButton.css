@@ -61,3 +61,12 @@
 .btn_long:hover{
     background: #008BDA;
 }
+
+.btn_delete_favourite{
+    background-color: #DF0000;
+}
+
+.btn_delete_favourite:hover{
+    background-color: #FF0000;
+}
+

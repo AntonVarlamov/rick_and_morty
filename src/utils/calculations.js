@@ -28,17 +28,19 @@ export const getNumberEpisodes = (arrOfUrlCharacters) => {
     return res.join(', ')
 }
 
-export const parseCharacters = arr =>{
+export const parseCharacters = arr => {
     arr = arr.map(item => item.name)
     return arr.length > 15
         ? arr.slice(0, 16).join(", ") + " и др."
         : arr.join(", ")
 }
 
-export const getIdFromUrl = arr =>{
-
+export const getIdFromUrl = arr => {
     return (arr ?? []).map(url => {
-        return  +url.match(/\d+$/)
+        return +url.match(/\d+$/)
     })
 }
 
+export const getTotalPages = arrFavourites => {
+    return Math.trunc(arrFavourites.length / 20) + Math.ceil(arrFavourites.length % 20 / 20)
+}

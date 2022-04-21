@@ -382,3 +382,128 @@ a {
     margin-top: 5px;
 }
 
+.done{
+    position: absolute;
+    right: 106px;
+    bottom: 26px;
+    display: flex;
+}
+
+.done p {
+    margin-left: 10px;
+    color: #00CA51;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 18px;
+}
+.done img{
+    width: 24px;
+    height: 19px;
+}
+.episode_panel .done{
+    right: 120px;
+    top: 29px;
+}
+
+.favourites_img{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    margin-top: 35px;
+}
+
+.favourite_location{
+    background: rgba(0, 0, 0, 0.3) url("../assetes/jpg/favourite_locations.jpg") no-repeat;
+    background-size: cover;
+    border: 2px solid #00A3FF;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.favourite_character{
+    background: rgba(0, 0, 0, 0.3) url("../assetes/jpg/favourite_characters.jpg") no-repeat;
+    background-size: cover;
+    border: 2px solid #00A3FF;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+.favourite_episode{
+    background: rgba(0, 0, 0, 0.3) url("../assetes/jpg/favourite_episodes.jpg") no-repeat;
+    background-size: cover;
+    border: 2px solid #00A3FF;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.normal_favourite, .chosen_favourite{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.normal_favourite{
+    width: 270px;
+    height: 54px;
+    font-weight: 700;
+    font-size: 26px;
+    line-height: 32px;
+    cursor: pointer;
+}
+
+.chosen_favourite{
+    width: 430px;
+    height: 97px;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 59px;
+    cursor: pointer;
+}
+
+
+
+.long_favourite, .short_favourite{
+    margin-top: 32px;
+}
+.short_favourite{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.short_panel .delete, .short_panel_location .delete{
+    border: 1px solid rgba(162, 162, 162, 0.6);
+    background: #DF0000;
+    border-radius: 100%;
+    transform: rotate(45deg);
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+    opacity: 0;
+}
+.short_panel:hover .delete, .short_panel_location:hover .delete{
+    opacity: 1;
+}
+.short_panel .delete:hover, .short_panel_location .delete:hover{
+    background: #FF0000;
+}
+
+.select{
+    position: relative;
+}
+
+.select_img{
+    position: absolute;
+    bottom: 15px;
+    right: 44px;
+}
+
+.none {
+    display: none;
+}

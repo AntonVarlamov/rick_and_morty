@@ -49,10 +49,6 @@
     right: -144px;
 }
 
-.none {
-    display: none;
-}
-
 .modal .btn {
     position: inherit;
     display: block;
