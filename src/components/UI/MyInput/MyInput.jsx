@@ -27,7 +27,7 @@ const MyInput = ({className, typeInput, password, setIsValidData, isValidData, i
             setIsError(false);
         }
     },[incorrect])
-    const onFocus = (e) => {
+    const onChange = (e) => {
         if (typeInput) {
             if (typeInput === "passwordRepeat") {
                 if (password === e.target.value) {
@@ -51,7 +51,7 @@ const MyInput = ({className, typeInput, password, setIsValidData, isValidData, i
                 onChange={(e) => {
                     if(props.name){
                         inputHandler(e, props.name)
-                        onFocus(e)
+                        onChange(e)
                     }
                 }}
                 {...props}
