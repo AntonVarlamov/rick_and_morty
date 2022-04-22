@@ -3,7 +3,7 @@ import './MyInput.css'
 import warning from "../../../assetes/icons/warning.svg"
 import {validateInput} from "../../../utils/validator";
 
-const MyInput = ({className, typeInput, password, setIsValidData, isValidData, incorrect, ...props}) => {
+const MyInput = ({className, typeInput, password, setIsValidData, isValidData, incorrect, inputHandler, ...props}) => {
     const [isError, setIsError] = useState(false);
     const [textError, setTextError] = useState("");
     useEffect(() => {
@@ -48,8 +48,11 @@ const MyInput = ({className, typeInput, password, setIsValidData, isValidData, i
         <div>
             <input
                 className={`input_filter ${className}` + (isError ? " input_error" : "")}
-                onBlur={(e) => {
-                    onFocus(e)
+                onChange={(e) => {
+                    if(props.name){
+                        inputHandler(e, props.name)
+                        onFocus(e)
+                    }
                 }}
                 {...props}
             />

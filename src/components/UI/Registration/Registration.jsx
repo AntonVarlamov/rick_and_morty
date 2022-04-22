@@ -82,9 +82,8 @@ const Registration = ({isVisible, setIsVisible}) => {
                         id="email"
                         incorrect={isEmailOccupied}
                         value={userData.email}
-                        onChange={(e) => {
-                            inputHandler(e, 'email')
-                        }}
+                        name="email"
+                        inputHandler={inputHandler}
                         isValidData={isValidData}
                         setIsValidData={setIsValidData}
                         typeInput={userData.email ? "email" : ""}
@@ -96,14 +95,13 @@ const Registration = ({isVisible, setIsVisible}) => {
                         placeholder="Придумайте логин"
                         type="text"
                         id="login"
+                        name="login"
+                        inputHandler={inputHandler}
                         incorrect={isLoginOccupied}
                         value={userData.login}
                         isValidData={isValidData}
                         setIsValidData={setIsValidData}
                         typeInput={userData.login ? "login" : ""}
-                        onChange={(e) => {
-                            inputHandler(e, 'login')
-                        }}
                         maxLength={20}
                         required
                     />
@@ -111,13 +109,12 @@ const Registration = ({isVisible, setIsVisible}) => {
                         className="login_input"
                         placeholder="Введите имя"
                         type="text"
+                        name="firstName"
+                        inputHandler={inputHandler}
                         typeInput={userData.firstName ? "firstName" : ""}
                         isValidData={isValidData}
                         setIsValidData={setIsValidData}
                         value={userData.firstName}
-                        onChange={(e) => {
-                            inputHandler(e, 'firstName')
-                        }}
                         id="first_name"
                         maxLength={50}
                         required
@@ -126,13 +123,12 @@ const Registration = ({isVisible, setIsVisible}) => {
                         className="login_input"
                         placeholder="Введите фамилию"
                         id="second_name"
+                        name="secondName"
                         value={userData.secondName}
+                        inputHandler={inputHandler}
                         isValidData={isValidData}
                         setIsValidData={setIsValidData}
                         typeInput={userData.secondName ? "secondName" : ""}
-                        onChange={(e) => {
-                            inputHandler(e, 'secondName')
-                        }}
                         type="text"
                         maxLength={50}
                         required
@@ -143,12 +139,11 @@ const Registration = ({isVisible, setIsVisible}) => {
                             placeholder="Введите  пароль"
                             id="password_registration"
                             value={userData.password}
+                            name="password"
                             isValidData={isValidData}
                             setIsValidData={setIsValidData}
+                            inputHandler={inputHandler}
                             typeInput={userData.password ? "password" : ""}
-                            onChange={(e) => {
-                                inputHandler(e, 'password')
-                            }}
                             type={isPasswordText ? "text" : "password"}
                             maxLength={50}
                             required
@@ -165,11 +160,11 @@ const Registration = ({isVisible, setIsVisible}) => {
                             className="login_input"
                             placeholder="Повторите  пароль"
                             id="password_repeat"
+                            name="passwordRepeat"
                             value={userData.passwordRepeat}
+                            inputHandler={inputHandler}
                             typeInput={userData.passwordRepeat ? "passwordRepeat" : ""}
-                            onChange={(e) => {
-                                inputHandler(e, 'passwordRepeat')
-                            }}
+
                             password={userData.password}
                             isValidData={isValidData}
                             setIsValidData={setIsValidData}
