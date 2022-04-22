@@ -97,9 +97,9 @@ const MainCharacters = () => {
                 </div>
             </section>
             <section className="container main_characters">
-                {!characters.length
-                    && <p className="not_found container">Таких персонажей пока не существует</p>
-                }
+                    {!characters.length
+                        && <p className="not_found container">Таких персонажей пока не существует</p>
+                    }
                 {characters.map((item, id) => {
                     return (
                         isHamburger

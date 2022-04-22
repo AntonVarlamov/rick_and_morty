@@ -5,12 +5,30 @@ import {validateInput} from "../../../utils/validator";
 
 const MyInput = ({className, typeInput, password, setIsValidData, isValidData, incorrect, inputHandler, ...props}) => {
     const [isError, setIsError] = useState(false);
+    const [currentText, setIsCurrentText] = useState("");
     const [textError, setTextError] = useState("");
     useEffect(() => {
         if (!typeInput) {
             setIsError(false)
         }
     }, [typeInput])
+    useEffect(()=>{
+        if (typeInput) {
+            if (typeInput === "passwordRepeat") {
+                if (password === currentText) {
+                    setIsError(false)
+                } else {
+                    setIsError(true)
+                    setTextError("Пароли должны совпадать")
+                }
+            } else {
+                validateInput(currentText, typeInput, setIsError, setTextError)
+            }
+            let copy = isValidData;
+            copy[typeInput] = !isError;
+            setIsValidData({...copy})
+        }
+    }, [currentText])
     useEffect(()=>{
         if(incorrect){
             setIsError(true);
@@ -51,6 +69,7 @@ const MyInput = ({className, typeInput, password, setIsValidData, isValidData, i
                 onChange={(e) => {
                     if(props.name){
                         inputHandler(e, props.name)
+                        setIsCurrentText(e.target.value)
                         onChange(e)
                     }
                 }}

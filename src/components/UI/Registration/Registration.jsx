@@ -43,7 +43,6 @@ const Registration = ({isVisible, setIsVisible}) => {
     }
     const registrationHandler = (e) => {
         e.preventDefault()
-        console.log(isValidData)
         if(!Object.values(isValidData).includes(false)){
             let users = JSON.parse(localStorage.getItem("rickAndMortyUsers") ?? "{}");
             if(users[userData.email]){
@@ -164,7 +163,6 @@ const Registration = ({isVisible, setIsVisible}) => {
                             value={userData.passwordRepeat}
                             inputHandler={inputHandler}
                             typeInput={userData.passwordRepeat ? "passwordRepeat" : ""}
-
                             password={userData.password}
                             isValidData={isValidData}
                             setIsValidData={setIsValidData}

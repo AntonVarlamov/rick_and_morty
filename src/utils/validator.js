@@ -2,7 +2,7 @@ export const validateInput = (text, typeInput, setIsError, setTextError) => {
 
     const namesValidate = () => {
         let isFirstName = typeInput === "firstName";
-        if (text.length < 2 && text) {
+        if (text.length < 2) {
             setTextError(`Длина ${isFirstName ? "имени" : "фамилии"} должна быть не менее 2 символов`)
             setIsError(true)
         } else {

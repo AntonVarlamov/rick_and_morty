@@ -25,7 +25,6 @@ const Favourites = () => {
     async function fetchFavourites() {
         const arrFavourites = Object.keys(currentUser[`favourite${chosen}`] ?? {}).map(item => +item)
         const response = await PostService.getFavourites(arrFavourites, chosen, setIsLoading);
-        console.log(response)
         setTotalPages(getTotalPages(response?.data ?? []))
         setFavourites([...(response?.data ?? [])])
     }
